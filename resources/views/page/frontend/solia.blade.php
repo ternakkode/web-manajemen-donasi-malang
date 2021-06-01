@@ -25,34 +25,34 @@
 <section class="causes-area gray-bg pt-120 pb-110">
     <div class="container">
         <div class="row">
+            @foreach ($solias as $solia)
             <div class="col-lg-4 col-md-6">
-                <div class="causes-single mb-30" data-aos="fade-up" data-aos-delay="100">
-                    <div class="causes-thumb">
-                        <img src="https://xpressrow.com/html/foundy/img/causes/causes-08.jpg" alt="">
-                    </div>
-                    <div class="causes-content">
-                        <div class="causes-head clearfix mb-10">
-                            <h4><a href="causes-details.html">Food For Israfil</a></h4>
+                <a href="{{ url('solia/'.$solia->id) }}">
+                    <div class="causes-single mb-30" data-aos="fade-up" data-aos-delay="100">
+                        <div class="causes-thumb">
+                            @foreach($solia->photos as $photo)
+                            @if($photo->is_primary)
+                            <img src="{{ solia_image_url($photo->solia_photo_url) }}" alt="">
+                            @endif
+                            @endforeach
                         </div>
-                        <div class="causes-text mb-25">
-                            <p>Rorem ipsum dolor sit amet, consecteadi pisicing elit, sed do eiusmod temincididunt ut
-                                labore et dolore magna aliqua. Utele enimey.</p>
+                        <div class="causes-content" style="height:200px">
+                            <div class="causes-head clearfix mb-10">
+                                <h4><a href="{{ url('solia/'.$solia->id) }}">{{ $solia->name }}</a></h4>
+                            </div>
+                            <div class="causes-text mb-25">
+                                <p>{{ truncateDescription($solia->description) }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="pagination-wrapper text-center mt-35" data-aos="fade-up" data-aos-delay="100">
-                    <ul>
-                        <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                        <li><a href="#">01</a></li>
-                        <li class="active"><a href="#">02</a></li>
-                        <li><a href="#">03</a></li>
-                        <li><a href="#"><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                    </ul>
+                    {{ $solias->links()  }}
                 </div>
             </div>
         </div>

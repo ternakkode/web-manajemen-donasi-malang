@@ -45,27 +45,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($donations as $key => $donation)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $key + 1 }}</th>
+                            <td>{{ $donation->donatur_name }}</td>
+                            <td>Rp. {{ number_formatting($donation->amount) }}</td>
+                            <td>{{ $donation->campaign->campaign_title }} </td>
+                            <td>{{ indonesian_date($donation->donation_time) }}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -75,34 +63,24 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama Donatur</th>
+                            <th scope="col">Keperluan</th>
+                            <th scope="col">Sumber Dana</th>
                             <th scope="col">Jumlah</th>
-                            <th scope="col">Penggalangan Dana</th>
-                            <th scope="col">Waktu Donasi</th>
+                            <th scope="col">Waktu Transaksi</th>
+                            <th scope="col">Bukti Pengeluaran</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($outcomes as $key => $outcome)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $key + 1}}</th>
+                            <td>{{ $outcome->necessity }}</td>
+                            <td>{{ $outcome->campaign->campaign_title }}</td>
+                            <td>Rp. {{ number_formatting($outcome->amount) }}</td>
+                            <td>{{ indonesian_date($outcome->transaction_date) }}</td>
+                            <td><a target="_blank" href="{{ outcome_proof_url($outcome->proof) }}" class="btn btn-primary">Dokumen Bukti</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

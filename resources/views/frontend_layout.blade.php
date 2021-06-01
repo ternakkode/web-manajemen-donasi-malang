@@ -122,6 +122,7 @@
         <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
         <script src="{{ asset('frontend/js/plugins.js') }}"></script>
         <script src="{{ asset('frontend/js/main.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         @yield('js')
     </body>
 </html>

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title text-center" data-aos="fade-up" data-aos-delay="100">
-                    <h1>Lorem Ipsum Dolor Sit Amet</h1>
+                    <h1>{{ $information->information_title }}</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item">
@@ -31,45 +31,17 @@
                 <div class="news-wrapper mb-40">
                     <article>
                         <div class="single-news-post mb-30">
-                            <div class="post-thumb mb-30" data-aos="fade-up" data-aos-delay="100">
-                                <img src="https://xpressrow.com/html/foundy/img/news/news-feeds/news-feeds-01.jpg" alt="">
+                            <div class="post-thumb mb-30 text-center" data-aos="fade-up" data-aos-delay="100">
+                                <img src="{{ information_image_url($information->information_photo) }}" alt="" style="height:60vh;width: auto;">
                             </div>
                             <div class="post-content">
                                 <div class="post-meta mb-20" data-aos="fade-up" data-aos-delay="100">
-                                        <span>Ditulis Oleh : Firhan</span>
-                                        <span>Update Penggalangan Dana</span>
-                                        <span>21 September 2021</span>
-                                </div>
-                                <h4 class="post-title" data-aos="fade-up" data-aos-delay="100">
-                                    Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt
-                                </h4>
-                                <div class="text mb-40" data-aos="fade-up" data-aos-delay="100">
-                                    <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna a liqua. Ut enim ad minim veniam, quis
-                                        nostrud exerc itaullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                                        aute irure dolor.Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                        do eiusmod tempor incididunt.m dolor sit amet, consectet.</p>
-                                    <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna a liqua. Ut enim ad minim veniam, quis
-                                        nostrud exerc itaullamco.</p>
+                                        <span>Ditulis Oleh : {{ $information->user->name }}</span>
+                                        <span>{{ $information->category->information_category_name }}</span>
+                                        <span>{{ indonesian_date($information->publish_date) }}</span>
                                 </div>
                                 <div class="text mb-40" data-aos="fade-up" data-aos-delay="100">
-                                    <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna a liqua. Ut enim ad minim veniam, quis
-                                        nostrud exerc itaullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                                        aute irure dolor.Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                        do eiusmod tempor incididunt.m dolor sit amet, consectet.Rorem ipsum dolor sit
-                                        amet, consectetur adipisicing elit, sed do eiusmody. </p>
-                                </div>
-                                <div class="text" data-aos="fade-up" data-aos-delay="100">
-                                    <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna a liqua. Ut enim ad minim veniam, quis
-                                        nostrud exerc itaullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                                        aute irure dolor.Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                        do eiusmod tempor incididunt.m dolor sit amet, consectet.nostrud exerc
-                                        itaullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                        dolor.Rorem ipsum dolor sit amet.</p>
+                                    {!! $information->information_description !!}
                                 </div>
                             </div>
                         </div>

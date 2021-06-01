@@ -11,6 +11,7 @@ Route::get('solia/{id}', 'FrontendController@soliaDetail');
 Route::get('campaign', 'FrontendController@campaign');
 Route::get('campaign/{id}', 'FrontendController@campaignDetail');
 Route::get('donation', 'FrontendController@donation');
+Route::post('donation', 'FrontendController@processDonation');
 Route::get('transparation', 'FrontendController@transparation');
 
 Route::group(['prefix' => 'auth', 'name' => 'auth.'], function () {

@@ -12,7 +12,7 @@ function information_image_url($fileName) {
     return asset('storage/'.config('url.information-photo').'/'.$fileName);
 }
 
-function solia_image_link($fileName) {
+function solia_image_url($fileName) {
     return asset('storage/'.config('url.solia-photo').'/'.$fileName);
 }
 
@@ -45,4 +45,8 @@ function indonesian_date($tanggal)
 function number_formatting($angka)
 {
     return number_format($angka, 0, "", ".") . "";
+}
+
+function truncateDescription($str) {
+    return strip_tags(substr($str, 0, 120)). '...';
 }

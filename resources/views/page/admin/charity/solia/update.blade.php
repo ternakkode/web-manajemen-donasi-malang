@@ -56,7 +56,7 @@
                         <div class="row mb-4 solia-image-wrapper">
                             @foreach($solia->photos as $photo)
                             <div class="col-md-3 mx-1 text-center">
-                                <a href="{{ solia_image_link($photo->solia_photo_url) }}"></a><img src="{{ solia_image_link($photo->solia_photo_url) }}" class="img-thumbnail" style="max-height:200px"></a>
+                                <a href="{{ solia_image_url($photo->solia_photo_url) }}"></a><img src="{{ solia_image_url($photo->solia_photo_url) }}" class="img-thumbnail" style="max-height:200px"></a>
                                 <div class="solia-img-cta mt-2 text-center">
                                     @if(!$photo->is_primary)
                                     <button type="button"

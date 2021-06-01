@@ -28,54 +28,52 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="faq-left mb-20" data-aos="fade-up" data-aos-delay="100">
                     <div class="faq-wrapper">
+                        @for($i = 0; $i < floor(count($faqs)) / 2; $i++)
                         <div class="accordion" id="accordionExampleOne">
                             <div class="card">
                                 <div class="card-header" id="headingOnee">
                                     <h5 class="mb-0">
-                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOnee"
+                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapse-{{ $i }}"
                                             aria-expanded="true" aria-controls="collapseOnee">
-                                            Consectetur adipisicing elit, sed do eiusmod tempor incididuny ?
+                                            {{ $faqs[$i]->question }}
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="collapseOnee" class="collapse" aria-labelledby="headingOnee"
+                                <div id="collapse-{{ $i }}" class="collapse" aria-labelledby="headingOnee"
                                     data-parent="#accordionExampleTwo" style="">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsam quae
-                                        eligendi minus, maiores vitae quo animi. Neque sit voluptatibus recusandae
-                                        dolorum laboriosam. Fugiat, voluptatum vel animi distinctio cupiditate magni
-                                        quis amet natus eveniet incidunt quo ab soluta voluptas id dolor ducimus.
+                                        {{ $faqs[$i]->answer }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endfor
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6">
                 <div class="faq-right mb-20" data-aos="fade-up" data-aos-delay="300">
                     <div class="faq-wrapper">
-                        <div class="accordion" id="accordionExampleTwo">
+                    @for($i = floor(count($faqs) / 2); $i < count($faqs); $i++)
+                        <div class="accordion" id="accordionExampleOne">
                             <div class="card">
-                                <div class="card-header" id="headingFour">
+                                <div class="card-header" id="headingOnee">
                                     <h5 class="mb-0">
-                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseFour"
-                                            aria-expanded="true" aria-controls="collapseFour">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit ?
+                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapse-{{ $i }}"
+                                            aria-expanded="true" aria-controls="collapseOnee">
+                                            {{ $faqs[$i]->question }}
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                <div id="collapse-{{ $i }}" class="collapse" aria-labelledby="headingOnee"
                                     data-parent="#accordionExampleTwo" style="">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsam quae
-                                        eligendi minus, maiores vitae quo animi. Neque sit voluptatibus recusandae
-                                        dolorum laboriosam. Fugiat, voluptatum vel animi distinctio cupiditate magni
-                                        quis amet natus eveniet incidunt quo ab soluta voluptas id dolor ducimus.
+                                        {{ $faqs[$i]->answer }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endfor
                     </div>
                 </div>
             </div>

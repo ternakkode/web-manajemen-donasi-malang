@@ -30,41 +30,32 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="news-wrapper mb-40">
+                    @foreach($informations as $information)
                     <article>
                         <div class="post-item mb-30" data-aos="fade-up" data-aos-delay="100">
                             <div class="post-inner">
                                 <div class="post-content">
                                     <div class="post-meta mb-20">
-                                        <span>Ditulis Oleh : Firhan</span>
-                                        <span>Update Penggalangan Dana</span>
-                                        <span>21 September 2021</span>
+                                        <span>Ditulis Oleh : {{ $information->user->name }}</span>
+                                        <span>{{ $information->category->information_category_name }}</span>
+                                        <span>{{ indonesian_date($information->publish_date) }}</span>
                                     </div>
                                     <h4 class="post-title">
-                                        <a href="news-details.html">Rorem ipsum dolor sit amet, consectetur adipisicing
-                                            elit, sed do eiusmod tempor incididunt</a>
+                                        <a href="{{ url('information/'.$information->id) }}">{{ $information->information_title }}</a>
                                     </h4>
                                     <div class="post-text mb-30">
-                                        <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna a liqua. Ut enim ad minim
-                                            veniam, quis nostrud exerc itaullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor.</p>
+                                        <p>{{ truncateDescription($information->information_description) }}</p>
                                     </div>
                                     <div class="post-btn">
-                                        <a class="thm-btn thm-btn-4" href="news-details.html">Baca Selengkapnya</a>
+                                        <a class="thm-btn thm-btn-4" href="{{ url('information/'.$information->id) }}">Baca Selengkapnya</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </article>
+                    @endforeach
                     <div class="pagination-wrapper mt-55" data-aos="fade-up" data-aos-delay="100">
-                        <ul>
-                            <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                            <li><a href="#">01</a></li>
-                            <li class="active"><a href="#">02</a></li>
-                            <li><a href="#">03</a></li>
-                            <li><a href="#"><i class="fas fa-ellipsis-h"></i></a></li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                        </ul>
+                        {{ $informations->links() }}
                     </div>
                 </div>
             </div>

@@ -27,36 +27,51 @@
         <div class="row">
             <div class="col-12">
                 <div class="causes-dtls-content">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="donate-amount mb-35">
                         <div class="donate-title mb-35" data-aos="fade-up" data-aos-delay="100">
                             <h3>Tata Cara Donasi</h3>
-                            <p></p>
+                            {{ $tata_cara_donasi }}
                         </div>
                     </div>
-                    <form class="give-form" action="#">
+                    <form class="give-form" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-title" data-aos="fade-up" data-aos-delay="300">
                             <h3>Form Donasi</h3>
                         </div>
                         <div class="row" data-aos="fade-up" data-aos-delay="300">
                             <div class="col-xl-12">
-                                <label>Penggalangan Dana<span> *</span></label>
-                                <input type="text" name="fname">
+                                <label>Penggalangan Dana<span> *</span> @if(isset($status))<span id="emailHelp"
+                                        class="text-muted">{{ $status }}</span>@endif</label>
+                                <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                                <input type="text" value="{{ $campaign->campaign_title }}" disabled>
                             </div>
                             <div class="col-xl-12">
-                                <label>Nama Lengkap<span> *</span></label>
-                                <input type="text" name="fname">
+                                <label>Nama Lengkap <span id="emailHelp" class="text-muted">(Boleh
+                                        dikosongi)</span></label>
+                                <input type="text" name="donatur_name">
                             </div>
                             <div class="col-xl-12">
                                 <label>Jumlah Donasi<span> *</span></label>
-                                <input type="number" name="lname">
+                                <input type="number" name="amount">
                             </div>
                             <div class="col-xl-12">
-                                <label>Pesan Yang Ingin Disampaikan<span> *</span></label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" style="min-height:200px"></textarea>
+                                <label>Pesan Yang Ingin Disampaikan <span id="emailHelp" class="text-muted">(Boleh
+                                        dikosongi)</span></label>
+                                <textarea class="form-control" name="message" style="min-height:200px">-</textarea>
                             </div>
                             <div class="col-xl-12">
                                 <label>Bukti Donasi<span>*</span></label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="donation_proof" class="form-control-file"
+                                    id="exampleFormControlFile1">
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-bottom d-flex flex-wrap align-items-center justify-content-between w-100"
